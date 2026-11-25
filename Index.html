@@ -1,0 +1,210 @@
+
+function createGISInitiativeForm() {
+  const form = FormApp.create(
+    'GIS & Remote Sensing Initiative – Yemen | Membership & Activities Registration'
+  );
+
+  form.setDescription(
+    'نرحب بالطلاب والخريجين والمهنيين والباحثين والمهتمين بنظم المعلومات الجغرافية والاستشعار عن بُعد من جميع محافظات اليمن.\n\n' +
+    'This form helps us understand your background, interests, and preferred activities.'
+  );
+
+  form.setConfirmationMessage(
+    'شكراً لاهتمامك بالانضمام إلى مبادرتنا. سنستخدم بياناتك للتواصل بشأن أنشطتنا.\n\n' +
+    'Thank you for your interest in our initiative.'
+  );
+
+  form.setProgressBar(true);
+
+  // Section 1: Personal Information
+  form.addSectionHeaderItem()
+    .setTitle('القسم الأول: المعلومات الشخصية | Personal Information');
+
+  form.addTextItem()
+    .setTitle('1. الاسم الكامل | Full Name')
+    .setRequired(true);
+
+  form.addTextItem()
+    .setTitle('2. البريد الإلكتروني | Email Address')
+    .setRequired(true);
+
+  form.addTextItem()
+    .setTitle('3. رقم الهاتف أو واتساب | Phone / WhatsApp')
+    .setRequired(false);
+
+  form.addListItem()
+    .setTitle('4. المحافظة | Governorate')
+    .setChoiceValues([
+      'أمانة العاصمة',
+      'صنعاء',
+      'عدن',
+      'تعز',
+      'إب',
+      'الحديدة',
+      'حضرموت',
+      'ذمار',
+      'مأرب',
+      'البيضاء',
+      'لحج',
+      'أبين',
+      'شبوة',
+      'الجوف',
+      'صعدة',
+      'عمران',
+      'حجة',
+      'المحويت',
+      'ريمة',
+      'الضالع',
+      'المهرة',
+      'سقطرى',
+      'أخرى'
+    ])
+    .setRequired(true);
+
+  // Section 2: Education and Professional Background
+  form.addPageBreakItem()
+    .setTitle('القسم الثاني: الخلفية العلمية والمهنية | Background');
+
+  form.addMultipleChoiceItem()
+    .setTitle('5. ما مؤهلك العلمي؟ | Education Level')
+    .setChoiceValues([
+      'ثانوية عامة',
+      'دبلوم',
+      'بكالوريوس',
+      'ماجستير',
+      'دكتوراه',
+      'أخرى'
+    ])
+    .setRequired(true);
+
+  form.addTextItem()
+    .setTitle('6. ما تخصصك العلمي أو مجال عملك؟ | Field of Study / Work')
+    .setRequired(true);
+
+  form.addMultipleChoiceItem()
+    .setTitle('7. ما وضعك الحالي؟ | Current Status')
+    .setChoiceValues([
+      'طالب',
+      'خريج',
+      'موظف',
+      'باحث أكاديمي',
+      'عمل حر',
+      'أخرى'
+    ])
+    .setRequired(true);
+
+  // Section 3: Skills and Interests
+  form.addPageBreakItem()
+    .setTitle('القسم الثالث: الخبرة والاهتمامات التقنية | Skills & Interests');
+
+  form.addMultipleChoiceItem()
+    .setTitle('8. كيف تصف مستواك في GIS؟ | GIS Skill Level')
+    .setChoiceValues([
+      'مبتدئ',
+      'أساسي',
+      'متوسط',
+      'متقدم',
+      'متخصص'
+    ])
+    .setRequired(true);
+
+  form.addCheckboxItem()
+    .setTitle('9. ما المجالات التي تهتم بها؟ | Areas of Interest')
+    .setChoiceValues([
+      'GIS',
+      'Remote Sensing',
+      'Spatial Analysis',
+      'Digital Cartography',
+      'Environmental Monitoring',
+      'Urban Planning',
+      'GIS for Telecommunications',
+      'Geospatial Research',
+      'Disaster Risk Reduction',
+      'Land Use / Land Cover Change'
+    ])
+    .setRequired(true);
+
+  form.addCheckboxItem()
+    .setTitle('10. ما البرامج التي سبق لك استخدامها؟ | Software Experience')
+    .setChoiceValues([
+      'ArcGIS Desktop',
+      'ArcGIS Pro',
+      'QGIS',
+      'ERDAS IMAGINE',
+      'ENVI',
+      'Google Earth Engine',
+      'لم أستخدم أي برنامج حتى الآن | None yet'
+    ])
+    .setRequired(true);
+
+  // Section 4: Participation
+  form.addPageBreakItem()
+    .setTitle('القسم الرابع: المشاركة | Participation');
+
+  form.addCheckboxItem()
+    .setTitle('11. ما الأنشطة التي ترغب في المشاركة فيها؟ | Preferred Activities')
+    .setChoiceValues([
+      'لقاءات علمية وتعريفية',
+      'دورات تدريبية',
+      'ورش عمل تطبيقية',
+      'مشروعات بحثية',
+      'مشروعات تطبيقية ميدانية',
+      'أنشطة مهنية وتوظيفية',
+      'التطوع والتعاون العلمي',
+      'تبادل الخبرات والمعرفة'
+    ])
+    .setRequired(true);
+
+  form.addMultipleChoiceItem()
+    .setTitle('12. ما طريقة المشاركة التي تناسبك؟ | Participation Mode')
+    .setChoiceValues([
+      'حضوري | In-person',
+      'عن بُعد | Online',
+      'كلاهما | Both'
+    ])
+    .setRequired(true);
+
+  form.addParagraphTextItem()
+    .setTitle('13. ما الموضوعات أو المهارات التي ترغب في تعلمها؟ | What would you like to learn?')
+    .setRequired(false);
+
+  form.addParagraphTextItem()
+    .setTitle('14. هل لديك خبرات أو مهارات ترغب في مشاركتها؟ | Skills you can share')
+    .setRequired(false);
+
+  form.addMultipleChoiceItem()
+    .setTitle('15. هل ترغب في المساهمة في تنظيم الأنشطة أو تنفيذ المشروعات؟ | Would you like to contribute?')
+    .setChoiceValues([
+      'نعم | Yes',
+      'لا | No',
+      'ربما مستقبلاً | Maybe later'
+    ])
+    .setRequired(true);
+
+  // Section 5: Consent
+  form.addPageBreakItem()
+    .setTitle('القسم الخامس: الموافقة | Consent');
+
+  form.addMultipleChoiceItem()
+    .setTitle('16. هل توافق على استخدام بياناتك للتواصل بشأن أنشطة المبادرة؟ | Do you consent to being contacted about initiative activities?')
+    .setChoiceValues([
+      'نعم، أوافق | Yes, I agree',
+      'لا أوافق | No, I do not agree'
+    ])
+    .setRequired(true);
+
+  // Create linked response spreadsheet
+  const sheet = SpreadsheetApp.create(
+    'GIS Initiative Yemen – Membership Responses'
+  );
+
+  form.setDestination(
+    FormApp.DestinationType.SPREADSHEET,
+    sheet.getId()
+  );
+
+  // Output links
+  Logger.log('FORM EDIT LINK: ' + form.getEditUrl());
+  Logger.log('FORM PUBLIC LINK: ' + form.getPublishedUrl());
+  Logger.log('RESPONSES SHEET: ' + sheet.getUrl());
+}
