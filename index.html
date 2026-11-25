@@ -1,210 +1,436 @@
 
-function createGISInitiativeForm() {
-  const form = FormApp.create(
-    'GIS & Remote Sensing Initiative – Yemen | Membership & Activities Registration'
-  );
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  form.setDescription(
-    'نرحب بالطلاب والخريجين والمهنيين والباحثين والمهتمين بنظم المعلومات الجغرافية والاستشعار عن بُعد من جميع محافظات اليمن.\n\n' +
-    'This form helps us understand your background, interests, and preferred activities.'
-  );
+<meta name="description" content="GeoSpatial Learning and Research Initiative - GIS, Remote Sensing and Spatial Research in Yemen.">
 
-  form.setConfirmationMessage(
-    'شكراً لاهتمامك بالانضمام إلى مبادرتنا. سنستخدم بياناتك للتواصل بشأن أنشطتنا.\n\n' +
-    'Thank you for your interest in our initiative.'
-  );
+<title>GeoSpatial Learning & Research Initiative</title>
 
-  form.setProgressBar(true);
-
-  // Section 1: Personal Information
-  form.addSectionHeaderItem()
-    .setTitle('القسم الأول: المعلومات الشخصية | Personal Information');
-
-  form.addTextItem()
-    .setTitle('1. الاسم الكامل | Full Name')
-    .setRequired(true);
-
-  form.addTextItem()
-    .setTitle('2. البريد الإلكتروني | Email Address')
-    .setRequired(true);
-
-  form.addTextItem()
-    .setTitle('3. رقم الهاتف أو واتساب | Phone / WhatsApp')
-    .setRequired(false);
-
-  form.addListItem()
-    .setTitle('4. المحافظة | Governorate')
-    .setChoiceValues([
-      'أمانة العاصمة',
-      'صنعاء',
-      'عدن',
-      'تعز',
-      'إب',
-      'الحديدة',
-      'حضرموت',
-      'ذمار',
-      'مأرب',
-      'البيضاء',
-      'لحج',
-      'أبين',
-      'شبوة',
-      'الجوف',
-      'صعدة',
-      'عمران',
-      'حجة',
-      'المحويت',
-      'ريمة',
-      'الضالع',
-      'المهرة',
-      'سقطرى',
-      'أخرى'
-    ])
-    .setRequired(true);
-
-  // Section 2: Education and Professional Background
-  form.addPageBreakItem()
-    .setTitle('القسم الثاني: الخلفية العلمية والمهنية | Background');
-
-  form.addMultipleChoiceItem()
-    .setTitle('5. ما مؤهلك العلمي؟ | Education Level')
-    .setChoiceValues([
-      'ثانوية عامة',
-      'دبلوم',
-      'بكالوريوس',
-      'ماجستير',
-      'دكتوراه',
-      'أخرى'
-    ])
-    .setRequired(true);
-
-  form.addTextItem()
-    .setTitle('6. ما تخصصك العلمي أو مجال عملك؟ | Field of Study / Work')
-    .setRequired(true);
-
-  form.addMultipleChoiceItem()
-    .setTitle('7. ما وضعك الحالي؟ | Current Status')
-    .setChoiceValues([
-      'طالب',
-      'خريج',
-      'موظف',
-      'باحث أكاديمي',
-      'عمل حر',
-      'أخرى'
-    ])
-    .setRequired(true);
-
-  // Section 3: Skills and Interests
-  form.addPageBreakItem()
-    .setTitle('القسم الثالث: الخبرة والاهتمامات التقنية | Skills & Interests');
-
-  form.addMultipleChoiceItem()
-    .setTitle('8. كيف تصف مستواك في GIS؟ | GIS Skill Level')
-    .setChoiceValues([
-      'مبتدئ',
-      'أساسي',
-      'متوسط',
-      'متقدم',
-      'متخصص'
-    ])
-    .setRequired(true);
-
-  form.addCheckboxItem()
-    .setTitle('9. ما المجالات التي تهتم بها؟ | Areas of Interest')
-    .setChoiceValues([
-      'GIS',
-      'Remote Sensing',
-      'Spatial Analysis',
-      'Digital Cartography',
-      'Environmental Monitoring',
-      'Urban Planning',
-      'GIS for Telecommunications',
-      'Geospatial Research',
-      'Disaster Risk Reduction',
-      'Land Use / Land Cover Change'
-    ])
-    .setRequired(true);
-
-  form.addCheckboxItem()
-    .setTitle('10. ما البرامج التي سبق لك استخدامها؟ | Software Experience')
-    .setChoiceValues([
-      'ArcGIS Desktop',
-      'ArcGIS Pro',
-      'QGIS',
-      'ERDAS IMAGINE',
-      'ENVI',
-      'Google Earth Engine',
-      'لم أستخدم أي برنامج حتى الآن | None yet'
-    ])
-    .setRequired(true);
-
-  // Section 4: Participation
-  form.addPageBreakItem()
-    .setTitle('القسم الرابع: المشاركة | Participation');
-
-  form.addCheckboxItem()
-    .setTitle('11. ما الأنشطة التي ترغب في المشاركة فيها؟ | Preferred Activities')
-    .setChoiceValues([
-      'لقاءات علمية وتعريفية',
-      'دورات تدريبية',
-      'ورش عمل تطبيقية',
-      'مشروعات بحثية',
-      'مشروعات تطبيقية ميدانية',
-      'أنشطة مهنية وتوظيفية',
-      'التطوع والتعاون العلمي',
-      'تبادل الخبرات والمعرفة'
-    ])
-    .setRequired(true);
-
-  form.addMultipleChoiceItem()
-    .setTitle('12. ما طريقة المشاركة التي تناسبك؟ | Participation Mode')
-    .setChoiceValues([
-      'حضوري | In-person',
-      'عن بُعد | Online',
-      'كلاهما | Both'
-    ])
-    .setRequired(true);
-
-  form.addParagraphTextItem()
-    .setTitle('13. ما الموضوعات أو المهارات التي ترغب في تعلمها؟ | What would you like to learn?')
-    .setRequired(false);
-
-  form.addParagraphTextItem()
-    .setTitle('14. هل لديك خبرات أو مهارات ترغب في مشاركتها؟ | Skills you can share')
-    .setRequired(false);
-
-  form.addMultipleChoiceItem()
-    .setTitle('15. هل ترغب في المساهمة في تنظيم الأنشطة أو تنفيذ المشروعات؟ | Would you like to contribute?')
-    .setChoiceValues([
-      'نعم | Yes',
-      'لا | No',
-      'ربما مستقبلاً | Maybe later'
-    ])
-    .setRequired(true);
-
-  // Section 5: Consent
-  form.addPageBreakItem()
-    .setTitle('القسم الخامس: الموافقة | Consent');
-
-  form.addMultipleChoiceItem()
-    .setTitle('16. هل توافق على استخدام بياناتك للتواصل بشأن أنشطة المبادرة؟ | Do you consent to being contacted about initiative activities?')
-    .setChoiceValues([
-      'نعم، أوافق | Yes, I agree',
-      'لا أوافق | No, I do not agree'
-    ])
-    .setRequired(true);
-
-  // Create linked response spreadsheet
-  const sheet = SpreadsheetApp.create(
-    'GIS Initiative Yemen – Membership Responses'
-  );
-
-  form.setDestination(
-    FormApp.DestinationType.SPREADSHEET,
-    sheet.getId()
-  );
-
-  // Output links
-  Logger.log('FORM EDIT LINK: ' + form.getEditUrl());
-  Logger.log('FORM PUBLIC LINK: ' + form.getPublishedUrl());
-  Logger.log('RESPONSES SHEET: ' + sheet.getUrl());
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  font-family: Arial, Tahoma, sans-serif;
+  background: #f3f6f8;
+  color: #263746;
+  line-height: 1.8;
+}
+
+header {
+  background: linear-gradient(135deg, #10384b, #176477);
+  color: white;
+  text-align: center;
+  padding: 55px 18px;
+}
+
+header h1 {
+  font-size: 29px;
+  margin-bottom: 12px;
+}
+
+header p {
+  color: #e0edf1;
+}
+
+nav {
+  background: #102f40;
+  text-align: center;
+  padding: 14px 8px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px 10px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #70d6c5;
+}
+
+.language {
+  text-align: center;
+  padding: 20px;
+}
+
+button {
+  background: #167b70;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 11px 22px;
+  margin: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #105d55;
+}
+
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 15px;
+}
+
+section {
+  background: white;
+  padding: 28px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+h2 {
+  color: #14546a;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #176477;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.card {
+  background: #edf4f6;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+ul {
+  padding-left: 25px;
+}
+
+[dir="rtl"] ul {
+  padding-left: 0;
+  padding-right: 25px;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+.hidden {
+  display: none;
+}
+
+.contact {
+  text-align: center;
+  background: #e8f2f3;
+}
+
+footer {
+  background: #10384b;
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 5px;
+  font-size: 14px;
+}
+
+@media(max-width:600px) {
+  header {
+    padding: 35px 14px;
+  }
+
+  header h1 {
+    font-size: 23px;
+  }
+
+  nav a {
+    margin: 5px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>GeoSpatial Learning & Research Initiative</h1>
+  <p>GIS • Remote Sensing • Spatial Analysis • Geospatial Research</p>
+  <p>Yemen</p>
+</header>
+
+<nav>
+  <a href="#about" data-en="About" data-ar="عن المبادرة">About</a>
+  <a href="#activities" data-en="Activities" data-ar="الأنشطة">Activities</a>
+  <a href="#programs" data-en="Programs" data-ar="البرامج">Programs</a>
+  <a href="#join" data-en="Join Us" data-ar="انضم إلينا">Join Us</a>
+</nav>
+
+<div class="language">
+  <button onclick="setLanguage('en')">English</button>
+  <button onclick="setLanguage('ar')">العربية</button>
+</div>
+
+<main>
+
+<!-- ENGLISH CONTENT -->
+
+<div id="english">
+
+<section id="about">
+<h2>About the Initiative</h2>
+
+<p>
+GeoSpatial Learning & Research Initiative is an independent educational
+and knowledge-sharing initiative focused on Geographic Information
+Systems (GIS), Remote Sensing, spatial analysis and geospatial research.
+</p>
+
+<p>
+Our mission is to promote geospatial knowledge, practical learning,
+scientific collaboration and applied research.
+</p>
+
+<p>
+We welcome students, graduates, researchers and professionals
+interested in geospatial sciences and their applications.
+</p>
+</section>
+
+<section id="activities">
+<h2>Our Activities</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>GIS Education</h3>
+<p>
+Introducing GIS concepts, software, spatial databases
+and practical applications.
+</p>
+</div>
+
+<div class="card">
+<h3>Remote Sensing</h3>
+<p>
+Satellite imagery interpretation, land-cover classification
+and environmental monitoring.
+</p>
+</div>
+
+<div class="card">
+<h3>Spatial Research</h3>
+<p>
+Applied geographical research and spatial analysis
+for development and environmental studies.
+</p>
+</div>
+
+<div class="card">
+<h3>Knowledge Exchange</h3>
+<p>
+Educational meetings, scientific discussions
+and knowledge-sharing activities.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="programs">
+<h2>Learning Programs</h2>
+
+<ul>
+<li>Introduction to Geographic Information Systems.</li>
+<li>Introduction to Remote Sensing.</li>
+<li>Practical GIS applications.</li>
+<li>Satellite image processing and analysis.</li>
+<li>Spatial data management and visualization.</li>
+<li>Applied geospatial research projects.</li>
+</ul>
+</section>
+
+<section>
+<h2>Our Vision</h2>
+
+<p>
+Building a knowledgeable geospatial community that uses
+geographic information and scientific research to understand
+spatial challenges and support informed decision-making.
+</p>
+</section>
+
+<section id="join" class="contact">
+<h2>Join Our Initiative</h2>
+
+<p>
+Students, graduates, researchers and professionals
+are welcome to participate in our educational
+and knowledge-sharing activities.
+</p>
+
+<p>
+Registration information will be announced through
+our official communication channels.
+</p>
+</section>
+
+</div>
+
+<!-- ARABIC CONTENT -->
+
+<div id="arabic" class="hidden" dir="rtl">
+
+<section>
+<h2>عن المبادرة</h2>
+
+<p>
+مبادرة التعلم والبحث الجيومكاني هي مبادرة تعليمية
+ومعرفية مستقلة تهتم بنظم المعلومات الجغرافية
+والاستشعار عن بُعد والتحليل المكاني والأبحاث الجيومكانية.
+</p>
+
+<p>
+تتمثل رسالتنا في نشر المعرفة الجيومكانية،
+وتعزيز التعلم العملي، والتعاون العلمي،
+وتشجيع البحوث التطبيقية.
+</p>
+
+<p>
+نرحب بالطلاب والخريجين والباحثين والمهنيين
+والمهتمين بالعلوم الجيومكانية وتطبيقاتها.
+</p>
+</section>
+
+<section>
+<h2>أنشطتنا</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>التعليم الجيومكاني</h3>
+<p>
+التعريف بنظم المعلومات الجغرافية وبرامجها
+وقواعد البيانات المكانية وتطبيقاتها العملية.
+</p>
+</div>
+
+<div class="card">
+<h3>الاستشعار عن بُعد</h3>
+<p>
+تفسير صور الأقمار الصناعية وتصنيف الغطاء الأرضي
+ورصد التغيرات البيئية.
+</p>
+</div>
+
+<div class="card">
+<h3>البحث والتحليل المكاني</h3>
+<p>
+البحوث الجغرافية التطبيقية والتحليل المكاني
+لدعم دراسات التنمية والبيئة.
+</p>
+</div>
+
+<div class="card">
+<h3>تبادل المعرفة</h3>
+<p>
+اللقاءات التعليمية والنقاشات العلمية
+وأنشطة تبادل الخبرات والمعرفة.
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>البرامج التعليمية</h2>
+
+<ul>
+<li>مدخل إلى نظم المعلومات الجغرافية.</li>
+<li>مدخل إلى الاستشعار عن بُعد.</li>
+<li>التطبيقات العملية لنظم المعلومات الجغرافية.</li>
+<li>معالجة وتحليل صور الأقمار الصناعية.</li>
+<li>إدارة البيانات المكانية وإظهارها خرائطياً.</li>
+<li>مشاريع البحث الجيومكاني التطبيقي.</li>
+</ul>
+</section>
+
+<section>
+<h2>رؤيتنا</h2>
+
+<p>
+بناء مجتمع معرفي جيومكاني يوظف المعلومات الجغرافية
+والبحث العلمي لفهم التحديات المكانية
+ودعم اتخاذ القرارات المبنية على المعرفة.
+</p>
+</section>
+
+<section class="contact">
+<h2>انضم إلى المبادرة</h2>
+
+<p>
+نرحب بالطلاب والخريجين والباحثين والمهنيين
+للمشاركة في أنشطتنا التعليمية والمعرفية.
+</p>
+
+<p>
+سيتم الإعلان عن معلومات التسجيل
+عبر قنوات التواصل الرسمية للمبادرة.
+</p>
+</section>
+
+</div>
+
+</main>
+
+<footer>
+<p>GeoSpatial Learning & Research Initiative</p>
+<p>GIS • Remote Sensing • Spatial Research</p>
+<p>Yemen</p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+
+<script>
+function setLanguage(language) {
+
+  const english = document.getElementById("english");
+  const arabic = document.getElementById("arabic");
+
+  if (language === "ar") {
+    english.classList.add("hidden");
+    arabic.classList.remove("hidden");
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
+  } else {
+    arabic.classList.add("hidden");
+    english.classList.remove("hidden");
+    document.documentElement.lang = "en";
+    document.documentElement.dir = "ltr";
+  }
+}
+</script>
+
+</body>
+</html>
